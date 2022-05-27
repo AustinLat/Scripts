@@ -1,0 +1,17 @@
+#!/bin/bash
+
+backup() {
+  if (( ${#@} == 2 )) ; then
+    if ssh 192.168.0.42 '[ -d "~/backupdisk/${2}" ]'; then
+      scp -r "./${1}" "192.168.0.42:~/backupdisk/${2}/"
+    else
+      ssh 192.168.0.42 mkdir "~/backupdisk/${2}"
+      scp -r "./${1}" "192.168.0.42:~/backupdisk/${2}/"
+    fi  
+  else
+    scp -r "./${1}" "192.168.0.42:~/backupdisk"
+  fi
+  echo "completed with error code $?"
+}
+
+backup "$@"

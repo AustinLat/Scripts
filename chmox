@@ -1,0 +1,10 @@
+#!/bin/sh
+
+chmox () {
+  touch "$1"
+  chmod +x "$1"
+  printf "#!/bin/sh\n\n\n" > "$1"
+  vim "$1" 
+}
+
+chmox "$@"

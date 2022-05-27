@@ -1,0 +1,8 @@
+#!/bin/bash
+
+nightly() {
+  scp -rp "/home/austin/.local/bin" "/home/austin/notes" "/home/austin/Documents" "/home/austin/hack" "/home/austin/website" "/home/austin/snap/exercism/5/exercism" "/home/austin/Pictures" "192.168.0.42:~/backupdisk"
+  echo "completed with error code $?"
+}
+
+nightly

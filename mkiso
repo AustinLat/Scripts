@@ -1,0 +1,11 @@
+#!/bin/bash
+
+iso=`isosec`
+
+mkiso() {
+  echo $iso.md;
+  touch $iso.md;
+  vi $iso.md;
+}
+
+mkiso

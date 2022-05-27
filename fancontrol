@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+main() {
+
+  while true; do
+    #watch -n 2 nvidia-smi
+    temp=$(grep -o "[0-9][0-9]C" <<< $(nvidia-smi))
+    temp=${temp:0:2}
+    echo $temp
+    if [[ $temp -ne $previoustemp ]]; then
+      if (( $temp > 30 )); then
+        fan 20
+      fi
+      if (( $temp > 40 )); then
+        fan 40
+      fi
+      if (( $temp > 50 )); then
+        fan 60
+      fi
+      if (( $temp > 55 )); then
+        fan 85
+      fi
+      if (( $temp > 60 )); then
+        fan 100
+      fi
+    fi
+  sleep 1
+  previoustemp=${temp:0:2}
+  done
+}
+
+main "$@"

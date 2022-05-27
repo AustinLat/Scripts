@@ -1,0 +1,13 @@
+#!/bin/bash
+
+
+main() {
+  rsync -av -e "ssh -i/home/austin/.ssh/id_rsa" /home/austin/Documents/ austin@192.168.0.42:~/backupdisk/Documents/
+  rsync -av -e "ssh -i/home/austin/.ssh/id_rsa" /home/austin/.bashrc austin@192.168.0.42:~/backupdisk/
+  rsync -av -e "ssh -i/home/austin/.ssh/id_rsa" /home/austin/.local/bin/ austin@192.168.0.42:~/backupdisk/bin
+  rsync -av -e "ssh -i/home/austin/.ssh/id_rsa" /home/austin/.tmux.conf austin@192.168.0.42:~/backupdisk/
+  rsync -av -e "ssh -i/home/austin/.ssh/id_rsa" /home/austin/.vimrc austin@192.168.0.42:~/backupdisk/
+  rsync -av -e "ssh -i/home/austin/.ssh/id_rsa" /home/austin/zet austin@192.168.0.42:~/backupdisk/
+}
+
+main "$@"
